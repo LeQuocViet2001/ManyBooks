@@ -1,0 +1,186 @@
+<div class="content">
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb pull-left">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a routerLink="/book/list">Sách</a></li>
+        <li class="active">Giỏ hàng của tôi</li>
+      </ul><!-- /.breadcrumb -->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX ========================================= -->
+      <!--      <ul class="list-unstyled search-box pull-right">-->
+      <!--        <li data-target="#search" data-toggle="sub-header">-->
+      <!--          <button type="button" class="btn btn-primary-dark search-button"><i class="fa fa-search icon"></i></button>-->
+      <!--          <div class="row search-action sub-header" id="search">-->
+      <!--            <div class="col-sm-8 col-xs-12 no-padding-right">-->
+      <!--              <div class="input-group">-->
+      <!--                <span class="input-group-btn"><button class="btn btn-search" type="button"><i-->
+      <!--                  class="fa fa-search icon"></i></button></span>-->
+      <!--                <input type="text" class="form-control search-book" placeholder="Search books...">-->
+      <!--              </div>&lt;!&ndash; /.input-group &ndash;&gt;-->
+      <!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+
+      <!--            <div class="col-sm-4 col-xs-12 select-wrapper" style="padding:0px;">-->
+      <!--              <select id="id_select" class="selectpicker">-->
+      <!--                <option selected>Thể loại</option>-->
+      <!--                <option>Books</option>-->
+      <!--                <option>Textbooks</option>-->
+      <!--                <option>Audiobooks</option>-->
+      <!--                <option>Magazines</option>-->
+      <!--                <option>Kids</option>-->
+      <!--              </select>-->
+      <!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+      <!--          </div>&lt;!&ndash; /.row &ndash;&gt;-->
+      <!--        </li>-->
+      <!--      </ul>&lt;!&ndash; /.search-box &ndash;&gt;-->
+      <!-- ========================================= BREADCRUMB SEARCH BOX : END ========================================= -->
+
+    </div><!-- /.container -->
+  </div><!-- /.breadcrumb-container -->
+
+  <div class="cart page">
+    <div class="container">
+      <div class="page-header">
+        <h2 class="page-title">Giỏ hàng của tôi</h2>
+      </div><!-- /.page-header -->
+
+      <!--      ==form==-->
+      <div class="page-body">
+        <div class="order-detail table-responsive">
+          <table class="table table-cart cart-detail">
+            <thead>
+            <tr>
+              <th class="dark"><input type="checkbox" (change)="isAllChecked()" [checked]="checkAll"
+                                      style="margin: 0;">&nbsp;&nbsp;Sản phẩm
+              </th>
+              <th>Đơn giá</th>
+              <th class="dark text-center">Số lượng</th>
+              <th>Số tiền</th>
+              <th class="dark"></th>
+            </tr>
+            </thead><!-- /thead -->
+            <tbody class="cart-body-content">
+            <tr class="cart-book" *ngFor="let cartBook of cartBookList; let i=index">
+              <td>
+                <input type="checkbox" style="margin: 0;" (change)="isChecked(i)" [checked]="checkList[i]">
+                <div class="media">
+                  <a class="cart-thumbnail-image media-left">
+                    <div class="book-cover small-book-cover">
+                      <img width="72px" height="100px" [src]="cartBook.bookId.bookImage" alt="" class="media-object">
+                      <div style="cursor: pointer" [routerLink]="['/book/detail', cartBook.bookId.bookId]"
+                           class="fade"></div>
+                    </div>
+                  </a>
+                  <div class="media-body">
+                    <h3 class="media-heading"><a style="cursor: pointer"
+                                                 [routerLink]="['/book/detail', cartBook.bookId.bookId]">{{cartBook.bookId.bookName}}</a>
+                    </h3>
+                    <p style="font-size: 12px; text-transform: lowercase; font-family: sans-serif">{{cartBook.bookId.bookQuantity}} sản phẩm có sẵn</p>
+                  </div>
+                </div>
+              </td>
+              <td>
+                  <span *ngIf="cartBook.bookId.bookPromotionId.promotionId <= 1"
+                        class="price">{{cartBook.bookId.bookPrice|currency:'VND'}}</span>
+                <span *ngIf="cartBook.bookId.bookPromotionId.promotionId > 1" class="price"><span
+                  class="price-before-discount">{{cartBook.bookId.bookPrice|currency:'VND'}}</span> {{cartBook.bookId.bookPrice - cartBook.bookId.bookPrice * cartBook.bookId.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+              </td>
+              <td class="quantity text-center">
+                <div class="quant-input ">
+                  <div class="arrows">
+                    <button class="arrow plus gradient"
+                            [disabled]="cartBook.cartId.cartQuantity >= cartBook.bookId.bookQuantity"
+                            (click)="addBook(cartBook)"><span class="ir"></span></button>
+                    <button class="arrow minus gradient" *ngIf="cartBook.cartId.cartQuantity != 1"
+                            (click)="subBook(cartBook)"><span class="ir"></span></button>
+<!--                     button xoá-->
+                    <button class="arrow minus gradient" *ngIf="cartBook.cartId.cartQuantity == 1"
+                            (click)="showInfoCartDelete(cartBook)"
+                            data-toggle="modal" data-target="#modalDeleteCart"><span class="ir"></span></button>
+                  </div>
+                  <input class="txt-quantity" type="text" (change)="getQuantity($event.target, cartBook)"
+                         [value]="cartBook.cartId.cartQuantity" readonly/>
+                </div>
+              </td>
+              <td>
+                <span class="price subtotal">{{cartBook.cartId.cartTotalMoney|currency:'VND'}}</span>
+              </td>
+              <td>
+                <button (click)="showInfoCartDelete(cartBook)"
+                        data-toggle="modal"
+                        data-target="#modalDeleteCart" class="btn btn-primary-light btn-flat" type="button">X
+                </button>
+              </td>
+            </tr>
+            </tbody><!-- /.cart-body-content -->
+          </table><!-- /.table -->
+        </div><!-- /.order-detail -->
+        <div class="row">
+          <div class="col-xs-12 col-sm-4 center-sm" style="border-style: outset">
+            <h2 style="font-weight: bold">Giao tới</h2>
+            <hr>
+            <span style="color: black; font-weight: bold; font-size: 18px">{{customer.customerName}}</span>
+            &nbsp;&nbsp;<span style="font-size: 20px">|</span>&nbsp;&nbsp;
+            <span
+              style="color: black; font-weight: bold; font-size: 18px">Số điện thoại: {{customer.customerPhone}}</span>
+            <p></p>
+            <p style="font-size: 18px">Địa chỉ: {{customer.customerAddress}}</p>
+            <p style="font-size: 18px">Email: {{customer.customerEmail}}</p>
+          </div><!-- /.col -->
+
+          <div class="col-xs-12 col-sm-8 center-sm">
+            <div class="table-responsive">
+              <table class="table table-cart">
+                <tfoot>
+                <tr *ngIf="(totalMoneyBeforePromotion - totalMoney) > 0">
+                  <td><i class="icon-chevron fa fa-chevron-right"></i>&nbsp;Tiết kiệm</td>
+                  <td>{{totalMoneyBeforePromotion - totalMoney | currency:'VND'}}</td>
+                </tr>
+
+                <tr>
+                  <td><i class="icon-chevron fa fa-chevron-right"></i>&nbsp;Tổng tiền</td>
+                  <td>{{totalMoney | currency:'VND'}}</td>
+                </tr>
+                </tfoot><!-- /tfoot -->
+              </table><!-- /table -->
+            </div><!-- /table-responsive -->
+          </div><!-- /.col -->
+          <div class="col-md-12">
+            <a class="pull-right btn btn-primary btn-checkout" (click)="payment()">Tiến hành thanh toán &nbsp;<i
+              class="fa fa-chevron-right"></i></a>
+          </div>
+
+        </div><!-- /.row -->
+      </div><!-- /.page-body -->
+    </div><!-- /.container -->
+  </div><!-- /.cart page --> <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img
+  src="../../../assets/images/top-scroll.png" alt=""></a>
+</div>
+
+<!-- ========Modal========== -->
+<div class="modal fade" id="modalDeleteCart" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title" id="exampleModalLabel" style="font-weight: 500; color: crimson">Bạn chắc chắn muốn bỏ
+          sản phẩm này?</h3>
+      </div>
+      <div class="modal-body">
+        <h1 style="color: #4b7838; font-weight: bolder">{{cartDelete.bookId.bookName}}</h1>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary-light btn-flat" data-dismiss="modal"
+                (click)="deleteCart(cartDelete.cartBookId)">Xóa
+        </button>
+        <button style="background: gray" type="button" class="btn btn-primary-light btn-flat"
+                data-dismiss="modal">Huỷ
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<notifier-container></notifier-container>

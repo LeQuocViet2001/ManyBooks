@@ -1,0 +1,433 @@
+<div class="content">
+  <div class="home page">
+
+    <!-- .slider -->
+    <div class="slider">
+      <!-- ========================================== SECTION – HERO : END========================================= -->
+      <div id="hero">
+        <div id="owl-main" class="owl-carousel owl-theme">
+          <div class="item">
+            <div class="container">
+              <div class="content caption">
+                <div class="row">
+                  <div class="col-sm-5 col-sm-push-7">
+                    <div class="book-in-shelf">
+                      <div class="book-shelf">
+                        <div class="add-to-cart-action hidden-xs hidden-sm">
+                          <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                          <a *ngIf="isLoggedIn" style="cursor: pointer" (click)="addBook(bookBestSellerSliderList[0])"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                        </div> <!-- /.add-to-cart-action-->
+                        <div class="book-cover slider-book-cover">
+                          <img class="img-responsive" alt=""
+                               [src]="bookBestSellerSliderList[0].bookImage"
+                               width="258" height="351">
+                          <div style="cursor: pointer"
+                               [routerLink]="['/book/detail',bookBestSellerSliderList[0].bookId]" class="fade"></div>
+                        </div> <!-- /.book-cover -->
+                      </div><!-- /.book-shelf -->
+                    </div><!-- /.book-in-shelf -->
+                  </div><!-- /.col -->
+
+                  <div class="col-sm-7 col-sm-pull-5">
+                    <div class="clearfix slider-caption">
+                      <div class="slider-caption-heading">
+                        <h1 style="cursor: pointer" [routerLink]="['/book/detail',bookBestSellerSliderList[0].bookId]"
+                            class="slider-caption-title fadeInDown-1">{{bookBestSellerSliderList[0].bookName}}</h1>
+                        <div class="wrapper__demo">
+                          <p
+                            class="slider-caption-subtitle fadeInDown-2 hidden-xs max__width">{{bookBestSellerSliderList[0].bookContent}}</p>
+                        </div>
+                      </div><!-- /.slider-caption-heading -->
+                      <div class="clearfix slider-price fadeInDown-3 hidden-xs">
+                        <a class="btn btn-secondary btn-price"
+                           (click)="addBook(bookBestSellerSliderList[0])">{{bookBestSellerSliderList[0].bookPrice | currency: 'VND'}}</a>
+                      </div> <!-- /.slider-price -->
+                    </div><!-- /.slider-caption -->
+                  </div><!-- /.col -->
+
+
+                </div><!-- /.row -->
+
+              </div><!-- /.content.caption -->
+            </div><!-- /.container -->
+          </div><!-- /.item -->
+
+          <div class="item">
+            <div class="container">
+              <div class="content caption">
+                <div class="row">
+                  <div class="col-sm-5 col-sm-push-7">
+                    <div class="book-in-shelf">
+                      <div class="book-shelf">
+                        <div class="add-to-cart-action hidden-xs hidden-sm">
+                          <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                          <a *ngIf="isLoggedIn" style="cursor: pointer" (click)="addBook(bookBestSellerSliderList[1])"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                        </div> <!-- /.add-to-cart-action-->
+                        <div style="cursor: pointer" [routerLink]="['/book/detail',bookBestSellerSliderList[1].bookId]"
+                             class="book-cover slider-book-cover">
+                          <img class="img-responsive" alt=""
+                               [src]="bookBestSellerSliderList[1].bookImage"
+                               width="258" height="351">
+                          <div class="fade"></div>
+                        </div> <!-- /.book-cover -->
+                      </div><!-- /.book-shelf -->
+                    </div><!-- /.book-in-shelf -->
+                  </div><!-- /.col -->
+
+                  <div class="col-sm-7 col-sm-pull-5">
+                    <div class="clearfix slider-caption">
+                      <div class="slider-caption-heading">
+                        <h1 style="cursor: pointer" [routerLink]="['/book/detail',bookBestSellerSliderList[1].bookId]"
+                            class="slider-caption-title fadeInDown-1">{{bookBestSellerSliderList[1].bookName}}</h1>
+                        <div class="wrapper__demo">
+                          <p
+                            class="slider-caption-subtitle fadeInDown-2 hidden-xs max__width">{{bookBestSellerSliderList[1].bookContent}}</p>
+                        </div>
+                      </div><!-- /.slider-caption-heading -->
+                      <div class="clearfix slider-price fadeInDown-3 hidden-xs">
+                        <a class="btn btn-secondary btn-price"
+                           (click)="addBook(bookBestSellerSliderList[1])">{{bookBestSellerSliderList[1].bookPrice|currency: 'VND'}}</a>
+                      </div> <!-- /.slider-price -->
+                    </div><!-- /.slider-caption -->
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+
+              </div><!-- /.content.caption -->
+            </div><!-- /.container -->
+          </div><!-- /.item -->
+
+          <div class="item">
+            <div class="container">
+              <div class="content caption">
+                <div class="row">
+                  <div class="col-sm-5 col-sm-push-7">
+                    <div class="book-in-shelf">
+                      <div class="book-shelf">
+                        <div class="add-to-cart-action hidden-xs hidden-sm">
+                          <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                          <a *ngIf="isLoggedIn" style="cursor: pointer" (click)="addBook(bookBestSellerSliderList[2])"
+                             class="add-to-cart-button"><img
+                            src="../../../assets/images/shopping-cart.png" alt=""/></a>
+                        </div> <!-- /.add-to-cart-action-->
+                        <div class="book-cover slider-book-cover">
+                          <img class="img-responsive" alt=""
+                               [src]="bookBestSellerSliderList[2].bookImage"
+                               width="258" height="351">
+                          <div style="cursor: pointer"
+                               [routerLink]="['/book/detail',bookBestSellerSliderList[2].bookId]" class="fade"></div>
+                        </div> <!-- /.book-cover -->
+                      </div><!-- /.book-shelf -->
+                    </div><!-- /.book-in-shelf -->
+                  </div><!-- /.col -->
+
+                  <div class="col-sm-7 col-sm-pull-5">
+                    <div class="clearfix slider-caption">
+                      <div class="slider-caption-heading">
+                        <h1 style="cursor: pointer" [routerLink]="['/book/detail',bookBestSellerSliderList[2].bookId]"
+                            class="slider-caption-title fadeInDown-1">{{bookBestSellerSliderList[2].bookName}}</h1>
+                        <div class="wrapper__demo">
+                          <p
+                            class="slider-caption-subtitle fadeInDown-2 hidden-xs max__width">{{bookBestSellerSliderList[2].bookContent}}</p>
+                        </div><!-- /.slider-caption-heading -->
+                      </div><!-- /.slider-caption-heading -->
+                      <div class="clearfix slider-price fadeInDown-3 hidden-xs">
+                        <a class="btn btn-secondary btn-price"
+                           (click)="addBook(bookBestSellerSliderList[2])">{{bookBestSellerSliderList[2].bookPrice | currency: 'VND'}}</a>
+                      </div> <!-- /.slider-price -->
+                    </div><!-- /.slider-caption -->
+                  </div><!-- /.col -->
+                </div><!-- /.row -->
+
+              </div><!-- /.content.caption -->
+            </div><!-- /.container -->
+          </div><!-- /.item -->
+        </div><!-- /#owl-main -->
+
+        <!--        <div class="container">-->
+        <!--          <div class="row">-->
+        <!--            <div class="col-sm-6">-->
+        <!--              <div class="slider-action">-->
+        <!--                <div class="row sub-header" id="search">-->
+        <!--                  <div class='col-md-12'>-->
+        <!--                    <div class="row">-->
+        <!--                      <div class="col-sm-8 no-padding-right">-->
+        <!--                        <div class="input-group">-->
+        <!--                                                                <span class="input-group-btn"><button-->
+        <!--                                                                  class="btn btn-search"-->
+        <!--                                                                  type="button"><i-->
+        <!--                                                                  class="fa fa-search icon"></i></button></span>-->
+        <!--                          <input type="text" class="form-control search-book"-->
+        <!--                                 placeholder="Tìm kiếm...">-->
+        <!--                        </div>&lt;!&ndash; /.input-group &ndash;&gt;-->
+        <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+
+        <!--                      <div class="select-wrapper col-sm-4" style="padding:0px;">-->
+        <!--                        <select id="id_select" class="selectpicker">-->
+        <!--                          <option selected>Tất cả thể loại</option>-->
+        <!--                          <option *ngFor="let category of categoryList">{{category.categoryName}}</option>-->
+        <!--                        </select>-->
+        <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+        <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+        <!--                  </div>&lt;!&ndash; /.col &ndash;&gt;-->
+        <!--                </div>&lt;!&ndash; /.row &ndash;&gt;-->
+        <!--              </div>&lt;!&ndash; /.slider-action &ndash;&gt;-->
+        <!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+        <!--          </div>&lt;!&ndash; /.row &ndash;&gt;-->
+        <!--        </div>&lt;!&ndash; /.container &ndash;&gt;-->
+
+      </div>
+
+
+    </div><!-- /.slider -->
+    <!-- /.slider -->
+
+    <div class="container">
+      <!-- .block-new-books -->
+      <!-- ========================================= NEW BOOKS MODULE ========================================= -->
+      <div class="wow fadeInUp">
+        <div class="module block-new-books module-block">
+          <div class="module-heading">
+            <h2 class="module-title">NHỮNG CUỐN SÁCH MỚI</h2>
+          </div><!-- /.module-heading -->
+
+          <div class="customNavigation">
+            <a (click)="slickModal.slickGoTo(backBookIntro())" href="#"
+               class="btn btn-navigation left-nav-arrow-seller owl-prev next-slide"><i
+              class='icon fa fa-caret-left'></i></a>
+            <a (click)="slickModal.slickGoTo(nextBookIntro())" href="#"
+               class="btn btn-navigation right-nav-arrow-seller owl-next"><i
+              class='icon fa fa-caret-right'></i></a>
+          </div><!-- /.customNavigation -->
+
+          <div class="module-body">
+            <div class="books">
+              <ngx-slick-carousel class="carousel"
+                                  #slickModal="slick-carousel"
+                                  [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let bookIntro of bookIntroList" class="slide">
+                  <div class="book">
+                    <div class="sale-ribbon" *ngIf="bookIntro.bookPromotionId.promotionId > 1">
+                      <div class="sale-ribbon-content">sale off</div>
+                    </div>
+                    <div class="book-cover">
+                      <div class="book-inner">
+                        <img [src]="bookIntro.bookImage" width="193"
+                             height="261" alt="">
+                        <div [routerLink]="['/book/detail',bookIntro.bookId]" class="fade"></div>
+                        <div class="book-price">
+                          <span *ngIf="bookIntro.bookPromotionId.promotionId <= 1"
+                                class="price">{{bookIntro.bookPrice|currency:'VND'}}</span>
+                          <span *ngIf="bookIntro.bookPromotionId.promotionId > 1" class="price"><span
+                            class="price-before-discount">{{bookIntro.bookPrice|currency:'VND'}}</span> {{bookIntro.bookPrice - bookIntro.bookPrice * bookIntro.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                        </div><!-- /.book-price -->
+
+                        <div class="cart animate-effect">
+                          <div class="action">
+                            <a *ngIf="!isLoggedIn" style="cursor: pointer" class="add-to-cart" routerLink="/cart" title="Add to Cart">
+                              <i class="icon icon-plus fa fa-plus-circle"></i>
+                            </a>
+                            <a *ngIf="isLoggedIn" style="cursor: pointer" class="add-to-cart" (click)="addBook(bookIntro)" title="Add to Cart">
+                              <i class="icon icon-plus fa fa-plus-circle"></i>
+                            </a>
+
+                            <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart"
+                               href="#" title="Favourite">
+                              <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart"
+                               href="#" title="Favourite">
+                              <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="add-to-cart" href="#" title="Favourite">
+                              <i class="icon icon-heart fa fa-heart"></i>
+                            </a>
+                          </div><!-- /.action -->
+                        </div><!-- /.cart -->
+                      </div><!-- /.book-inner -->
+                    </div><!-- /.book-cover -->
+
+
+                    <div class="book-details">
+                      <h3 class="book-title" style="width: 192px; font-size: 20px; height: 66px"><a
+                        href="detail.html">{{bookIntro.bookName}}</a></h3>
+                      <p class="book-author">{{bookIntro.bookAuthorId.authorName}}</p>
+                      <p>{{bookIntro.bookQuantity}} sản phẩm có sẵn</p>
+                      <div class="star-rating">
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star "></i>
+                      </div><!-- /.star-rating -->
+
+                    </div><!-- /.book-details -->
+                  </div><!-- /.book -->
+                </div>
+              </ngx-slick-carousel>
+            </div><!-- /#new-carousel -->
+          </div><!-- /.books -->
+        </div><!-- /.module-body -->
+      </div><!-- /.module -->
+
+      <!-- ========================================= NEW BOOKS MODULE : END ========================================= -->
+      <!-- /.block-new-books -->
+
+      <!-- .block-best-sellers -->
+      <!-- ========================================= BEST SELLER MODULE ========================================= -->
+      <div class="wow fadeInUp">
+        <div class="module block-best-sellers module-block">
+          <div class="module-heading">
+            <h2 class="module-title">Sách bán chạy</h2>
+          </div><!-- /.module-heading -->
+
+          <div class="customNavigation">
+            <a (click)="slickModalBestSeller.slickGoTo(backBookBestSeller())" href="#"
+               class="btn btn-navigation left-nav-arrow-seller owl-prev next-slide"><i
+              class='icon fa fa-caret-left'></i></a>
+            <a (click)="slickModalBestSeller.slickGoTo(nextBookBestSeller())" href="#"
+               class="btn btn-navigation right-nav-arrow-seller owl-next"><i
+              class='icon fa fa-caret-right'></i></a>
+          </div><!-- /.customNavigation -->
+
+          <div class="module-body">
+            <div class="books">
+              <ngx-slick-carousel class="carousel"
+                                  #slickModalBestSeller="slick-carousel"
+                                  [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let bookIntroBestSeller of bookBestSeller" class="slide">
+                  <div class="book">
+                    <div class="sale-ribbon" *ngIf="bookIntroBestSeller.bookPromotionId.promotionId > 1">
+                      <div class="sale-ribbon-content">sale off</div>
+                    </div>
+                    <div class="book-cover">
+                      <div class="book-inner">
+                        <img [src]="bookIntroBestSeller.bookImage" width="193"
+                             height="261" alt="">
+                        <div style="cursor: pointer" [routerLink]="['/book/detail',bookIntroBestSeller.bookId]"
+                             class="fade"></div>
+                        <div class="book-price">
+                          <span *ngIf="bookIntroBestSeller.bookPromotionId.promotionId <= 1"
+                                class="price">{{bookIntroBestSeller.bookPrice|currency:'VND'}}</span>
+                          <span *ngIf="bookIntroBestSeller.bookPromotionId.promotionId > 1" class="price"><span
+                            class="price-before-discount">{{bookIntroBestSeller.bookPrice|currency:'VND'}}</span> {{bookIntroBestSeller.bookPrice - bookIntroBestSeller.bookPrice * bookIntroBestSeller.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                        </div><!-- /.book-price -->
+
+                        <div class="cart animate-effect">
+                          <div class="action">
+                            <a *ngIf="isLoggedIn" style="cursor: pointer" class="add-to-cart" title="Add to Cart">
+                              <i (click)="addBook(bookIntroBestSeller)" class="icon icon-plus fa fa-plus-circle"></i>
+                            </a>
+                            <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart" class="add-to-cart" title="Add to Cart">
+                              <i class="icon icon-plus fa fa-plus-circle"></i>
+                            </a>
+
+                            <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart"
+                               href="#" title="Favourite">
+                              <i class="fa-solid fa-trash"></i>
+                            </a>
+                            <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart"
+                               href="#" title="Favourite">
+                              <i class="fa-solid fa-pen-to-square"></i>
+                            </a>
+                            <a class="add-to-cart" href="#" title="Favourite">
+                              <i class="icon icon-heart fa fa-heart"></i>
+                            </a>
+                          </div><!-- /.action -->
+                        </div><!-- /.cart -->
+                      </div><!-- /.book-inner -->
+                    </div><!-- /.book-cover -->
+
+
+                    <div class="book-details">
+                      <h3 class="book-title" style="width: 192px; font-size: 20px; height: 66px"><a
+                        href="detail.html">{{bookIntroBestSeller.bookName}}</a></h3>
+                      <p class="book-author">{{bookIntroBestSeller.bookAuthorId.authorName}}</p>
+                      <p>{{bookIntroBestSeller.bookQuantity}} sản phẩm có sẵn</p>
+                      <div class="star-rating">
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star "></i>
+                      </div><!-- /.star-rating -->
+
+                    </div><!-- /.book-details -->
+                  </div><!-- /.book -->
+                </div>
+              </ngx-slick-carousel>
+            </div><!-- /#new-carousel -->
+          </div><!-- /.books -->
+        </div><!-- /.module -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <!-- ========================================= BEST SELLER MODULE : END ========================================= -->
+    <!-- /.block-best-sellers -->
+
+    <!-- .block-featured-author -->
+    <div class="featured-item-block">
+      <div class="container">
+        <!-- ========================================= FEATURED AUTHOR MODULE ========================================= -->
+        <div class="wow fadeInUp">
+          <div class="module block-featured-author module-block">
+            <div class="module-heading">
+              <h2 class="module-title">TÁC GIẢ NỔI BẬT</h2>
+            </div><!-- /.module-heading -->
+
+            <div class="customNavigation">
+              <a (click)="slickModalAuthor.slickGoTo(backAuthor())" href="#"
+                 class="btn btn-navigation left-nav-arrow-seller owl-prev next-slide"><i
+                class='icon fa fa-caret-left'></i></a>
+              <a (click)="slickModalAuthor.slickGoTo(nextAuthor())" href="#"
+                 class="btn btn-navigation right-nav-arrow-seller owl-next"><i
+                class='icon fa fa-caret-right'></i></a>
+            </div><!-- /.customNavigation -->
+
+            <div class="module-body">
+              <div class="authors">
+                <ngx-slick-carousel class="carousel"
+                                    #slickModalAuthor="slick-carousel"
+                                    [config]="slideConfig">
+                  <div ngxSlickItem *ngFor="let author of authorList" class="slide">
+
+                    <div class="item item-author-block author">
+                      <a href="detail.html">
+                        <div class="author-dp">
+                          <img style="transform: translate(20%);" [src]="author.authorAvatar" alt="" width="198"
+                               height="198">
+                        </div>
+                      </a>
+                      <div class="author-details">
+                        <h3 class="author-name text-center"><a>{{author.authorName}}</a></h3>
+                        <button style="transform: translate(14%);" disabled href="category.html"
+                                class="btn btn-primary btn-view-books">View Books
+                        </button>
+                      </div><!-- /.author-details -->
+                    </div><!-- /.item -->
+                  </div><!-- /#featured-author-carousel -->
+                </ngx-slick-carousel>
+              </div><!-- /.authors -->
+            </div><!-- /.module-body -->
+          </div><!-- /.module -->
+        </div><!-- /.row -->
+        <!-- ========================================= FEATURED AUTHOR MODULE : END ========================================= -->
+      </div>
+    </div><!-- /.featured-item-block -->
+    <!-- /.block-featured-author -->
+
+  </div><!-- /.home-page -->
+  <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img
+    src="../../../assets/images/top-scroll.png"
+    alt=""></a>
+</div>
+<notifier-container></notifier-container>
+

@@ -1,0 +1,485 @@
+<div class="content">
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb pull-left">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a routerLink="/book/list">Sách</a></li>
+        <li class="active">Đăng nhập / Đăng kí</li>
+      </ul><!-- /.breadcrumb -->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX ========================================= -->
+<!--      <ul class="list-unstyled search-box pull-right">-->
+<!--        <li data-target="#search" data-toggle="sub-header">-->
+<!--          <button type="button" class="btn btn-primary-dark search-button"><i class="fa fa-search icon"></i></button>-->
+<!--          <div class="row search-action sub-header" id="search">-->
+<!--            <div class="col-sm-8 col-xs-12 no-padding-right">-->
+<!--              <div class="input-group">-->
+<!--                <span class="input-group-btn"><button class="btn btn-search" type="button"><i-->
+<!--                  class="fa fa-search icon"></i></button></span>-->
+<!--                <input type="text" class="form-control search-book" placeholder="Tìm kiếm sách...">-->
+<!--              </div>&lt;!&ndash; /.input-group &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+
+<!--            <div class="col-sm-4 col-xs-12 select-wrapper" style="padding:0px;">-->
+<!--              <select id="id_select" class="selectpicker">-->
+<!--                <option selected>Thể loại</option>-->
+<!--                <option>Books</option>-->
+<!--                <option>Textbooks</option>-->
+<!--                <option>Audiobooks</option>-->
+<!--                <option>Magazines</option>-->
+<!--                <option>Kids</option>-->
+<!--              </select>-->
+<!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+<!--          </div>&lt;!&ndash; /.row &ndash;&gt;-->
+<!--        </li>-->
+<!--      </ul>&lt;!&ndash; /.search-box &ndash;&gt;-->
+      <!-- ========================================= BREADCRUMB SEARCH BOX : END ========================================= -->
+
+    </div><!-- /.container -->
+  </div><!-- /.breadcrumb-container -->
+
+  <div class="checkout page">
+    <div class="container">
+      <div class="page-header">
+        <h2 class="page-title">Đăng nhập/đăng kí thanh toán</h2>
+        <!--        <p class="page-subtitle">DO eiusmod tempor incididunt ut labore et dolore magna aliqua</p>-->
+      </div><!-- /.page-header -->
+
+      <div class="page-body">
+        <div class="panel-group" id="accordion">
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                  <span class="step"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                          class="bi bi-box-arrow-in-right" viewBox="0 0 16 16">
+  <path fill-rule="evenodd"
+        d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z"/>
+  <path fill-rule="evenodd"
+        d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+</svg></span>Đăng nhập
+                </a>
+              </h4>
+            </div><!-- /.panel-heading -->
+
+            <form id="collapseOne" class="panel-collapse collapse in" style="margin-top: 50px" [formGroup]="loginForm"
+                  (ngSubmit)="login()">
+              <div class="panel-body">
+                <div class="row">
+
+                  <!--                  <div class="col-sm-offset-1 col-sm-5">-->
+                  <!--                    <h3 class="panel-subtitle">new customer</h3>-->
+                  <!--                    <div class=" checkout-radio-option">-->
+                  <!--                      <input type="radio" class="book-radio" name="optionsRadios" id="optionsRadios1" value="option1"-->
+                  <!--                             checked>-->
+                  <!--                      <label class="book-radio-label" for="optionsRadios1">-->
+                  <!--                        <span class="radio-background"><i class="icon fa fa-circle"></i></span>Register-->
+                  <!--                      </label>-->
+                  <!--                    </div>&lt;!&ndash; /.checkout-radio-option &ndash;&gt;-->
+
+                  <!--                    <div class="checkout-radio-option">-->
+                  <!--                      <input type="radio" class="book-radio" name="optionsRadios" id="optionsRadios2" value="option2">-->
+                  <!--                      <label class="book-radio-label" for="optionsRadios2">-->
+                  <!--                        <span class="radio-background"><i class="icon fa fa-circle"></i></span>Guest-->
+                  <!--                      </label>-->
+                  <!--                    </div>&lt;!&ndash; /.checkout-radio-option &ndash;&gt;-->
+
+                  <!--                    <p>Consectetur adipisicing elit,sed do eiusmod</p>-->
+                  <!--                  </div>&lt;!&ndash; /.col &ndash;&gt;-->
+                  <div class="col-sm-3"></div>
+                  <div class="col-sm-6">
+                    <!--                    <h3 class="panel-subtitle">return customer</h3>-->
+                    <div class="input-group margin-bottom-sm">
+                                                <span class="input-group-addon input-group-addon-book">
+                                                    <i class="fa fa-user fa-fw"></i>
+                                                </span>
+                      <input class="form-control form-control-book" type="text" placeholder="Tài khoản đăng nhập" formControlName="username">
+
+                    </div><!-- /.input-group -->
+                    <small style="color:white;">-</small>
+                    <small class="text-danger mb-0 pb-0"
+                           *ngIf="loginForm.get('username').invalid && (loginForm.get('username').touched||loginForm.get('username').dirty)">
+                      Người thực hiện không được để trống
+                    </small>
+
+
+                    <div class="row">
+                      <div class="col-md-6 col-sm-12 no-padding-right">
+                        <div class="input-group input-group-book">
+                                                        <span class="input-group-addon input-group-addon-book">
+                                                            <i class="fa fa-key fa-fw"></i>
+                                                        </span>
+                          <input class="form-control form-control-book" type="password" placeholder="*******"
+                                 formControlName="password"/>
+                        </div><!-- /.input-group -->
+                      </div><!-- /.col -->
+
+                      <div class="col-sm-6 hidden-sm forgot-password-field">
+                        <div class="forgot-password"><a href="#">Quên mật khẩu</a></div>
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+                    <small style="color:white;">-</small>
+                    <small class="text-danger mb-0 pb-0"
+                           *ngIf="loginForm.get('password').invalid && (loginForm.get('password').touched||loginForm.get('password').dirty)">
+                      Mật khẩu không được để trống
+                    </small>
+
+
+                    <div class="checkout-checkbox-option">
+                      <input type="checkbox" class="book-radio" name="optionsRadios" id="optionsRadios" value="option2"
+                             formControlName="remember_me">
+                      <label class="book-radio-label" for="optionsRadios">
+                        <span class="radio-background"><i class="icon fa fa-circle"></i></span>Ghi nhớ mật khẩu
+                      </label>
+                    </div><!-- /.checkout-checkbox-option -->
+
+                  </div><!-- /.col -->
+                  <div class="col-sm-3"></div>
+
+                  <div class="col-md-12">
+                    <button type="submit" class="pull-right btn btn-primary btn-checkout">
+                      Đăng nhập
+                      <i class="fa fa-chevron-right"></i>
+                    </button>
+                  </div>
+                </div><!-- /.row -->
+              </div><!-- /.panel-body -->
+            </form><!-- /.panel-collapse -->
+          </div><!-- /.panel -->
+
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseTwo">
+                  <span class="step"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                          class="bi bi-plus-square" viewBox="0 0 16 16">
+  <path
+    d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+</svg></span>Đăng kí
+                </a>
+              </h4>
+            </div><!-- /.panel-heading -->
+
+            <!--            =====================Đăng kí================-->
+
+            <div id="collapseTwo" class="panel-collapse collapse" style="margin-top: 50px">
+              <div class="panel-body">
+                <div class="form-container">
+                  <!--            ==form==-->
+                  <div class="cnt-form" role="form">
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Tên tài khoản
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Tên khách hàng
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                    <!--                    ====validate===-->
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                    </div>
+
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Mật khẩu
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Địa chỉ
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                    <!--                    ====validate===-->
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                    </div>
+
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Nhập lại mật khẩu
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Email
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+                    <!--                    ====validate===-->
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                      <div class="col-xs-12 col-sm-6">
+                        <small style="color:white;">-</small>
+                      </div>
+                    </div>
+
+                    <div class="row field-row form-group">
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Số điện thoại
+                          <span class="astk" style="color: red">*</span>
+                        </label>
+                        <input class="form-control form-control-book" type="text">
+
+                        <!--                    ====validate===-->
+                        <div class="row field-row form-group">
+                          <div class="col-xs-12 col-sm-6">
+                            <small style="color:white;">-</small>
+                          </div>
+                          <div class="col-xs-12 col-sm-6">
+                          </div>
+                        </div>
+
+                      </div><!-- /.col -->
+
+                      <div class="col-xs-12 col-sm-6">
+                        <label>
+                          Hình ảnh
+                        </label>
+                        <img [src]="urlCustomer" class="img-thumbnail">
+                        <br>
+                        <input #avatarCustomer type="file" class="form-control form-control-book form-control-file"
+                               (change)="showPreviewCustomer($event)">
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+
+
+                    <!--                    <div class="row field-row form-group">-->
+                    <!--                      <div id="create-account" class="col-xs-12">-->
+                    <!--                        <label>-->
+                    <!--                          <input type="checkbox">-->
+                    <!--                          Tạo tài khoản?-->
+                    <!--                        </label>-->
+                    <!--                        - Bạn sẽ nhận được email xác thực.-->
+                    <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+                    <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+                  </div><!-- /.cnt-form -->
+                </div><!-- /.form-container -->
+              </div><!-- /.panel-body -->
+
+              <div class="col-md-12">
+                <button href="cart.html" class="pull-right btn btn-primary btn-checkout">
+                  Đăng kí
+                  <i class="fa fa-chevron-right"></i>
+                </button>
+              </div>
+            </div><!-- /.panel-collapse -->
+          </div><!-- /.panel -->
+
+          <!--          <div class="panel panel-default">-->
+          <!--            <div class="panel-heading">-->
+          <!--              <h4 class="panel-title">-->
+          <!--                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseThree">-->
+          <!--                  <span class="step">3</span>Shipping Information-->
+          <!--                </a>-->
+          <!--              </h4>-->
+          <!--            </div>&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+          <!--            <div id="collapseThree" class="panel-collapse collapse">-->
+          <!--              <div class="panel-body">-->
+          <!--                <div class="form-container">-->
+          <!--                  <form class="cnt-form" role="form">-->
+          <!--                    <div class="row field-row form-group">-->
+          <!--                      <div class="col-xs-12 col-sm-6">-->
+          <!--                        <label>-->
+          <!--                          Full Name-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                      <div class="col-xs-12 col-sm-6">-->
+          <!--                        <label>-->
+          <!--                          Full Name-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+
+          <!--                    <div class="row field-row form-group">-->
+          <!--                      <div class="col-xs-12">-->
+          <!--                        <label>Company Name</label>-->
+          <!--                        <input class="form-control form-control-book" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+
+          <!--                    <div class="row field-row form-group">-->
+          <!--                      <div class="col-xs-12 col-sm-6">-->
+          <!--                        <label>-->
+          <!--                          Address-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" data-placeholder="street address" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                      <div class="col-xs-12 col-sm-6">-->
+          <!--                        <label> </label>-->
+          <!--                        <input class="form-control form-control-book" data-placeholder="town" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+
+          <!--                    <div class="row field-row form-group">-->
+          <!--                      <div class="col-xs-12 col-sm-4">-->
+          <!--                        <label>-->
+          <!--                          Postcode / Zip-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                      <div class="col-xs-12 col-sm-4">-->
+          <!--                        <label>-->
+          <!--                          Email Address-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" type="email">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                      <div class="col-xs-12 col-sm-4">-->
+          <!--                        <label>-->
+          <!--                          Phone Number-->
+          <!--                          <span class="astk">*</span>-->
+          <!--                        </label>-->
+          <!--                        <input class="form-control form-control-book" type="text">-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+
+          <!--                    <div class="row field-row form-group">-->
+          <!--                      <div id="shipping-account" class="col-xs-12">-->
+          <!--                        <label>-->
+          <!--                          <input type="checkbox"> Create Account?-->
+          <!--                        </label>-->
+          <!--                        - you will receive email with temporary generated password after login you need to change it.-->
+          <!--                      </div>&lt;!&ndash; /.col &ndash;&gt;-->
+          <!--                    </div>&lt;!&ndash; /.row &ndash;&gt;-->
+          <!--                  </form>&lt;!&ndash; /.cnt-form &ndash;&gt;-->
+          <!--                </div>&lt;!&ndash; /.form-container &ndash;&gt;-->
+          <!--              </div>&lt;!&ndash; /.panel-body &ndash;&gt;-->
+          <!--            </div>&lt;!&ndash; /.panel-collapse &ndash;&gt;-->
+          <!--          </div>&lt;!&ndash; /.panel &ndash;&gt;-->
+
+          <!--          <div class="panel panel-default">-->
+          <!--            <div class="panel-heading">-->
+          <!--              <h4 class="panel-title">-->
+          <!--                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapseShippingDetails">-->
+          <!--                  <span class="step">4</span>Shipping Method-->
+          <!--                </a>-->
+          <!--              </h4>-->
+          <!--            </div>&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+
+          <!--            <div id="collapseShippingDetails" class="panel-collapse collapse">-->
+          <!--              <div class="panel-body">-->
+          <!--                <div class="form-container">-->
+          <!--                  <form class="form cnt-form">-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" checked="" name="shipping-method">-->
+          <!--                        Normal Delivery-->
+          <!--                        <br>-->
+          <!--                        <small>2-5 Days.</small>-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" name="shipping-method">-->
+          <!--                        Express Delivery-->
+          <!--                        <br>-->
+          <!--                        <small>2-5 Days.</small>-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                  </form>&lt;!&ndash; /.cnt-form &ndash;&gt;-->
+          <!--                </div>&lt;!&ndash; /.form-container&ndash;&gt;-->
+          <!--              </div>&lt;!&ndash; /.panel-body &ndash;&gt;-->
+          <!--            </div>&lt;!&ndash; /.panel-collapse &ndash;&gt;-->
+          <!--          </div>&lt;!&ndash; /.panel &ndash;&gt;-->
+
+          <!--          <div class="panel panel-default">-->
+          <!--            <div class="panel-heading">-->
+          <!--              <h4 class="panel-title">-->
+          <!--                <a data-toggle="collapse" class="collapsed" data-parent="#accordion" href="#collapsePaymentInformation">-->
+          <!--                  <span class="step">5</span>Payment Information-->
+          <!--                </a>-->
+          <!--              </h4>-->
+          <!--            </div>&lt;!&ndash; /.panel-heading &ndash;&gt;-->
+          <!--            <div id="collapsePaymentInformation" class="panel-collapse collapse">-->
+          <!--              <div class="panel-body">-->
+          <!--                <div class="form-container">-->
+          <!--                  <form class="cnt-form" role="form">-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" checked="" name="payment">-->
+          <!--                        Direct Bank Transfer-->
+          <!--                        <br>-->
+          <!--                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce rutrum tempus elit,-->
+          <!--                          vestibulum vestibulum erat ornare id.</small>-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" name="payment">-->
+          <!--                        Cheque Payment-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" name="payment">-->
+          <!--                        Cash on Delivery-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                    <div class="radio">-->
+          <!--                      <label>-->
+          <!--                        <input type="radio" name="payment">-->
+          <!--                        Pay via Paypal-->
+          <!--                      </label>-->
+          <!--                    </div>&lt;!&ndash; /.radio &ndash;&gt;-->
+          <!--                    <div class="place-order-button">-->
+          <!--                      <button class="btn btn-primary btn-checkout" type="submit">place order</button>-->
+          <!--                    </div>-->
+          <!--                  </form>&lt;!&ndash; /.cnt-form &ndash;&gt;-->
+          <!--                </div>&lt;!&ndash; /.form-container &ndash;&gt;-->
+          <!--              </div>&lt;!&ndash; /.panel-body &ndash;&gt;-->
+          <!--            </div>&lt;!&ndash; /.panel-collapse &ndash;&gt;-->
+          <!--          </div>&lt;!&ndash; /.panel &ndash;&gt;-->
+        </div><!-- /.panel-group -->
+      </div><!-- /.page-body -->
+    </div><!-- /.container -->
+  </div><!-- /.checkout page -->
+
+  <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img src="assets/images/top-scroll.png"
+                                                                               alt=""></a>
+</div>

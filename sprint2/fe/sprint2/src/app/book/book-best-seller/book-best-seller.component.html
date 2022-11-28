@@ -1,0 +1,266 @@
+<!--=============navbar-top==============-->
+<div class="content">
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb pull-left">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a routerLink="/book/list">Sách</a></li>
+      </ul><!-- /.breadcrumb -->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX ========================================= -->
+<!--      <ul class="list-unstyled search-box pull-right">-->
+<!--        <li data-target="#search" data-toggle="sub-header">-->
+<!--          <button type="button" class="btn btn-primary-dark search-button"><i class="fa fa-search icon"></i></button>-->
+<!--          <div class="row search-action sub-header" id="search">-->
+<!--            <div class="col-sm-12 col-xs-12 no-padding-right">-->
+<!--              <div class="input-group">-->
+<!--                <span class="input-group-btn"><button class="btn btn-search" type="button"><i-->
+<!--                  class="fa fa-search icon"></i></button></span>-->
+<!--                <input type="text" class="form-control search-book" placeholder="Tìm kiếm sách...">-->
+<!--              </div>&lt;!&ndash; /.input-group &ndash;&gt;-->
+<!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+
+<!--            &lt;!&ndash;            <div class="col-sm-4 col-xs-12 select-wrapper" style="padding:0px;">&ndash;&gt;-->
+<!--            &lt;!&ndash;              <select id="id_select" class="selectpicker">&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option selected>Thể loại</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option>Books</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option>Textbooks</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option>Audiobooks</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option>Magazines</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;                <option>Kids</option>&ndash;&gt;-->
+<!--            &lt;!&ndash;              </select>&ndash;&gt;-->
+<!--            &lt;!&ndash;            </div>&lt;!&ndash; /.col &ndash;&gt;&ndash;&gt;-->
+<!--          </div>&lt;!&ndash; /.row &ndash;&gt;-->
+<!--        </li>-->
+<!--      </ul>&lt;!&ndash; /.search-box &ndash;&gt;-->
+      <!-- ========================================= BREADCRUMB SEARCH BOX : END ========================================= -->
+
+    </div><!-- /.container -->
+  </div><!-- /.breadcrumb-container -->
+
+  <div class="category page">
+    <div class="container">
+      <div class="page-header category-page-header">
+        <h2 class="page-title">NHỮNG CUỐN SÁCH BÁN CHẠY</h2>
+      </div><!-- /.page-header -->
+
+      <div class="page-body">
+        <div class="row">
+          <!-- ========================================= CONTENT ========================================= -->
+          <div class="col-sm-8 col-sm-push-4">
+            <div class="category-toolbar">
+              <div class="row">
+                <div class="col-md-3 col-sm-4">
+                  <ul id="myTab" class="nav nav-tabs grid-list-view-buttons" role="tablist">
+                    <li (click)="checkList(1)" role="presentation" class="active"><a href="#grid" class="btn navbar-btn"
+                                                                                     role="tab"
+                                                                                     data-toggle="tab"><span
+                      class="glyphicon glyphicon-th active"></span></a></li>
+                    <li (click)="checkList(2)" role="presentation"><a href="#list" class="btn navbar-btn" role="tab"
+                                                                      data-toggle="tab"><span
+                      class="glyphicon glyphicon-th-list"></span></a></li>
+                  </ul><!-- /.nav -->
+                </div><!-- /.col -->
+
+                <div class="col-md-4 col-sm-8">
+<!--                  <select class="selectpicker" [(ngModel)]="checkSort" (ngModelChange)="sortBookList(checkSort, 0)">-->
+<!--                    <option selected="selected" value="">Ngày mới nhất</option>-->
+<!--                    <option value="price:asc">Giá: thấp nhất cao</option>-->
+<!--                    <option value="price:desc">Giá: cao nhất thấp</option>-->
+<!--                    <option value="name:asc">Tên sách: A đến Z</option>-->
+<!--                    <option value="name:desc">Tên sách: Z đến A</option>-->
+<!--                  </select>-->
+                </div><!-- /.col -->
+
+
+                <div class="col-sm-offset-4 col-md-offset-2 col-md-3 col-md-3 col-sm-6 clearfix">
+                  <!--                  <div id="slider-range"></div>-->
+                  <!--                  <p>-->
+                  <!--                    <input type="text" id="amount" style="border:0; color:#666666; font-weight:bold;text-align:center;">-->
+                  <!--                  </p>-->
+                </div><!-- /.col -->
+
+              </div><!-- /.row -->
+            </div><!-- /.category-toolbar -->
+
+            <div class="tab-content">
+              <div class="tab-pane active  wow fadeInUp" id="grid" role="tabpanel">
+                <div class="category-books books grid-view">
+                  <div class="row">
+                    <div class="col-md-4 col-sm-6" *ngFor="let book of bookList">
+                      <div class="book">
+                        <div class="sale-ribbon" *ngIf="book.bookPromotionId.promotionId > 1">
+                          <div class="sale-ribbon-content">sale off</div>
+                        </div>
+                        <div class="book-cover">
+                          <div class="book-inner">
+                            <img [src]="book.bookImage" width="193" height="261" alt="">
+                            <div class="fade" style="cursor: pointer" [routerLink]="['/book/detail',book.bookId]"></div>
+                            <div class="book-price">
+                              <span *ngIf="book.bookPromotionId.promotionId <= 1"
+                                    class="price">{{book.bookPrice|currency:'VND'}}</span>
+                              <span *ngIf="book.bookPromotionId.promotionId > 1" class="price"><span
+                                class="price-before-discount">{{book.bookPrice|currency:'VND'}}</span> {{book.bookPrice - book.bookPrice * book.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                            </div><!-- /.book-price -->
+
+                            <div class="cart animate-effect">
+                              <div class="action">
+                                <a *ngIf="isLoggedIn" style="cursor: pointer" class="add-to-cart" title="Add to Cart">
+                                  <i (click)="addBook(book)" class="icon icon-plus fa fa-plus-circle"></i>
+                                </a>
+                                <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart" class="add-to-cart" title="Add to Cart">
+                                  <i class="icon icon-plus fa fa-plus-circle"></i>
+                                </a>
+
+                                <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart" href="#" title="Favourite">
+                                  <i class="fa-solid fa-trash"></i>
+                                </a>
+                                <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin-right: 10px" class="add-to-cart" href="#" title="Favourite">
+                                  <i class="fa-solid fa-pen-to-square"></i>
+                                </a>
+                                <a class="add-to-cart" href="#" title="Favourite">
+                                  <i class="icon icon-heart fa fa-heart"></i>
+                                </a>
+                              </div><!-- /.action -->
+                            </div><!-- /.cart -->
+                          </div><!-- /.book-inner -->
+                        </div><!-- /.book-cover -->
+
+
+                        <div class="book-details">
+                          <h3 class="book-title" style="width: 192px; font-size: 20px; height: 66px"><a
+                            href="detail.html">{{book.bookName}}</a></h3>
+                          <p class="book-author">{{book.bookAuthorId.authorName}}</p>
+                          <p>{{book.bookQuantity}} sản phẩm có sẵn</p>
+                          <div class="star-rating">
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star "></i>
+                          </div><!-- /.star-rating -->
+
+                        </div><!-- /.book-details -->
+                      </div><!-- /.book -->
+
+                    </div>
+                  </div>
+                </div><!-- /.category-books -->
+              </div><!-- /.tab-pane -->
+
+              <div class="tab-pane wow fadeInUp" id="list" role="tabpanel">
+                <div class="featured-book" *ngFor="let book2 of bookList2">
+                  <div class="books clearfix">
+                    <div class="row">
+                      <div class="col-md-4 col-sm-5">
+                        <div class="book">
+                          <div class="sale-ribbon" *ngIf="book2.bookPromotionId.promotionId > 1">
+                            <div class="sale-ribbon-content">sale off</div>
+                          </div>
+                          <div class="book-cover">
+                            <img class="img-responsive" alt="" width="193" height="261" [src]="book2.bookImage">
+                            <div class="fade" style="cursor: pointer" [routerLink]="['/book/detail',book2.bookId]"></div>
+                            <div class="book-price">
+                              <span *ngIf="book2.bookPromotionId.promotionId <= 1"
+                                    class="price">{{book2.bookPrice|currency:'VND'}}</span>
+                              <span *ngIf="book2.bookPromotionId.promotionId > 1" class="price"><span
+                                class="price-before-discount">{{book2.bookPrice|currency:'VND'}}</span> {{book2.bookPrice - book2.bookPrice * book2.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                            </div><!-- /.book-price -->
+                          </div><!-- /.book-cover -->
+                        </div><!-- /.book -->
+                      </div><!-- /.col -->
+
+                      <div class="col-md-8 col-sm-7">
+                        <div class="book-details book-details-list-view">
+                          <h3 class="book-title">
+                            <a href="detail.html">{{book2.bookName}}</a>
+                          </h3>
+                          <p class="book-author">{{book2.bookAuthorId.authorName}}</p>
+                          <p>{{book2.bookQuantity}} sản phẩm có sẵn</p>
+                          <div class="star-rating">
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star color"></i>
+                            <i class="fa fa-star"></i>
+                          </div><!-- /.star-rating -->
+                        </div><!-- /.book-details -->
+
+                        <div class="featured-book-content">
+                          <p class="hidden-sm hidden-md">{{book2.bookContent}}</p>
+                        </div><!-- /.featured-book-content -->
+                        <div class="actions">
+                          <a *ngIf="isLoggedIn" style="cursor: pointer" class="add-to-cart" title="Add to Cart">
+                            <i (click)="addBook(book2)" class="icon icon-plus fa fa-plus-circle"></i>
+                          </a>
+                          <a *ngIf="!isLoggedIn" style="cursor: pointer" routerLink="/cart" class="add-to-cart" title="Add to Cart">
+                            <i class="icon icon-plus fa fa-plus-circle"></i>
+                          </a>
+
+                          <a *ngIf="isLoggedIn && (showAdminBoard)" style="margin: 26px;" class="add-to-cart" href="#" title="Favourite">
+                            <i class="fa-solid fa-trash"></i>
+                          </a>
+                          <a *ngIf="isLoggedIn && (showAdminBoard)" class="add-to-cart" href="#" title="Favourite">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                          </a>
+                          <a class="add-to-cart" title="Favourite" href="#">
+                            <i class="icon-heart fa fa-heart"></i>
+                          </a>
+                        </div><!-- /.actions -->
+                      </div><!-- /.col -->
+                    </div><!-- /.row -->
+                  </div><!-- /.books -->
+                </div><!-- /.row -->
+              </div><!-- /.tab-pane -->
+
+            </div><!-- /.tab-content -->
+
+            <!--            ====pagination=====-->
+            <ul class="pagination book-pagination" *ngIf="totalPages > 1 && check == 1">
+              <li *ngIf="page > 0"><a (click)="getPreviousPage()" onclick="topFunction()">Previous</a></li>
+              <li *ngFor="let pageNumber of totalPageList"
+                  [ngClass]="(pageNumber==page ? 'active':'')"><a
+                (click)="getNumberPage(pageNumber)" onclick="topFunction()">{{pageNumber + 1}}</a></li>
+              <li *ngIf="page < totalPages-1"><a (click)="getNextPage()" onclick="topFunction()">Next</a></li>
+            </ul><!-- /.pagination -->
+
+            <ul class="pagination book-pagination" *ngIf="totalPages2 > 1 && check == 2">
+              <li *ngIf="page2 > 0"><a (click)="getPreviousPage2()" onclick="topFunction()">Previous</a></li>
+              <li *ngFor="let pageNumber of totalPageList2"
+                  [ngClass]="(pageNumber==page2 ? 'active':'')"><a
+                (click)="getNumberPage2(pageNumber)" onclick="topFunction()">{{pageNumber + 1}}</a></li>
+              <li *ngIf="page2 < totalPages2-1"><a (click)="getNextPage2()" onclick="topFunction()">Next</a></li>
+            </ul><!-- /.pagination -->
+          </div><!-- /.col -->
+
+          <!-- ========================================= CONTENT :END ========================================= -->
+
+          <!-- ========================================= SIDEBAR ========================================= -->
+          <div class="col-sm-4 col-sm-pull-8">
+            <aside class="sidebar">
+              <!-- ========================================= BOOK CATEGORY ========================================= -->
+              <section class="module">
+                <header class="module-header">
+                  <h4 class="module-book-category-title">Thể loại sách</h4>
+                </header><!-- /.module-header -->
+
+                <div class="module-body category-module-body">
+                  <ul class="list-unstyled category-list">
+                    <li style="cursor: pointer" *ngFor="let category of categoryList"><a
+                      [routerLink]="['/book/list', category.categoryId]">{{category.categoryName}}</a></li>
+                  </ul><!-- /.list-unstyled -->
+                </div><!-- /.module-body -->
+              </section><!-- /.module -->
+              <!-- ========================================= BOOK CATEGORY : END ========================================= -->
+            </aside><!-- /.sidebar -->
+          </div><!-- /.col -->
+          <!-- ========================================= SIDEBAR :END ========================================= -->
+        </div><!-- /.row -->
+      </div><!-- /.page-body -->
+    </div><!-- /.container -->
+  </div><!-- /.category page -->
+
+  <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img src="../../../assets/images/top-scroll.png"
+                                                                               alt=""></a>
+</div>
+<notifier-container></notifier-container>

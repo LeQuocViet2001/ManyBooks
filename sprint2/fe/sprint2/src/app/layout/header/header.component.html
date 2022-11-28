@@ -1,0 +1,93 @@
+<!-- ============================================================= HEADER ============================================================= -->
+<header class="header">
+  <!-- ============================================================= NAVBAR TOPBAR ============================================================= -->
+  <nav class="navbar navbar-top-bar navbar-static-top">
+    <div class="container">
+      <ul class="navbar-nav nav">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a>Về chúng tôi</a></li>
+        <li><a routerLink="">Dịch vụ khách hàng</a></li>
+        <li><a routerLink="">Điều kiện</a></li>
+      </ul><!-- /.navbar-nav -->
+
+      <ul class="navbar-nav nav navbar-right">
+        <li *ngIf="!isLoggedIn"><a routerLink="/login">Đăng nhập</a></li>
+        <li *ngIf="isLoggedIn"><a style="color: #629c49;">{{userName}}</a></li>
+        <li *ngIf="isLoggedIn"><a style="cursor: pointer" (click)="logout()">Đăng xuất</a></li>
+      </ul><!-- /.navbar-nav -->
+    </div><!-- /.container-->
+  </nav><!-- /.navbar-->
+  <!-- ============================================================= NAVBAR TOPBAR : END ============================================================= -->
+  <div class="yamm navbar navbar-default navbar-default-book animate-dropdown" role="navigation">
+    <div class="container">
+      <!-- ============================================================= NAVBAR PRIMARY ============================================================= -->
+
+      <div class="header-mast">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#KYbook-navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <!--          ===============LOGO===============-->
+          <a class="navbar-brand" routerLink="">
+            <img src="../../../assets/images/logo.png" width="170px" height="120px"/>
+          </a>
+
+        </div>
+        <!-- /.navbar-header -->
+        <div class="collapse navbar-collapse" id="KYbook-navbar">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown yamm-fw active">
+              <a routerLink="/book/list" data-toggle="dropdown" data-hover="dropdown"
+                 class="dropdown-toggle trigger">Danh mục sách<b class="caret"></b></a>
+              <ul class="dropdown-menu pages-dropdown">
+                <li *ngFor="let category of categoryList"><a
+                  [routerLink]="['/book/list', category.categoryId]">{{category.categoryName}}</a></li>
+              </ul><!-- /.dropdown-menu -->
+            </li> <!-- /.dropdown -->
+            <li class="hidden-sm"><a routerLink="book/list-best-seller">Sách bán chạy</a></li>
+            <li class="hidden-sm"><a routerLink="">Khuyến mãi</a></li>
+            <li><a routerLink="book/list-promotion">Giảm giá đặc biệt</a></li>
+            <!--            =======Phân quyền====-->
+            <!--            ====chưa login===-->
+            <li class="dropdown yamm-fw active" *ngIf="!isLoggedIn"></li>
+            <!--            ====đã login===-->
+            <!--            <li class="dropdown yamm-fw active" *ngIf="isLoggedIn && showAdminBoard">-->
+            <!--              <a routerLink="/book/list" data-toggle="dropdown" data-hover="dropdown"-->
+            <!--                 class="dropdown-toggle trigger">Danh mục sách<b class="caret"></b></a>-->
+            <!--              <ul class="dropdown-menu pages-dropdown">-->
+            <!--                <li *ngFor="let category of categoryList"><a-->
+            <!--                  [routerLink]="['/book/list', category.categoryId]">{{category.categoryName}}</a></li>-->
+            <!--              </ul>&lt;!&ndash; /.dropdown-menu &ndash;&gt;-->
+            <!--            </li>-->
+
+            <!--            <li class="dropdown">-->
+            <!--              <a href="category.html" data-toggle="dropdown" data-hover="dropdown"-->
+            <!--                 class="dropdown-toggle trigger">Pages <b class="caret"></b></a>-->
+            <!--              <ul class="dropdown-menu pages-dropdown">-->
+            <!--                <li><a href="category.html">Category</a></li>-->
+            <!--                <li><a href="detail.html">Single Product</a></li>-->
+            <!--                <li><a href="checkout.html">Checkout</a></li>-->
+            <!--                <li><a href="cart.html">Shopping Cart</a></li>-->
+            <!--                <li><a href="contact.html">Contact</a></li>-->
+            <!--                <li><a href="404.html">404</a></li>-->
+            <!--              </ul>&lt;!&ndash; /.dropdown-menu &ndash;&gt;-->
+            <!--            </li> &lt;!&ndash; /.dropdown &ndash;&gt;-->
+          </ul><!-- /.nav -->
+        </div><!-- /.collapse -->
+        <!--        ==========Giỏ hàng=========-->
+        <a *ngIf="isLoggedIn && (showAdminBoard||showCustomer)" routerLink="/cart" class="navbar-btn btn btn-cart"
+           data-toggle="collapse"><img
+          src="../../../assets/images/shopping-cart.png" alt=""/><span
+          class="badge-cart-items-count" id="total-quantity-cart-id">{{totalQuantityCart}}</span></a>
+      </div><!-- /.header-mast -->
+      <!-- ============================================================= NAVBAR PRIMARY : END ============================================================= -->
+    </div><!-- /.container -->
+  </div><!-- /.yamm -->
+
+</header><!-- /.header -->
+
+<!-- ============================================================= HEADER : END ============================================================= -->

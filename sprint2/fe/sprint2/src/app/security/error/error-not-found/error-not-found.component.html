@@ -1,0 +1,70 @@
+<div class="content">
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb pull-left">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a routerLink="/list/book">Sách</a></li>
+        <li class="active">Không có quyền truy cập</li>
+      </ul><!-- /.breadcrumb -->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX ========================================= -->
+      <ul class="list-unstyled search-box pull-right">
+        <li data-target="#search" data-toggle="sub-header"><button type="button" class="btn btn-primary-dark search-button"><i class="fa fa-search icon"></i></button>
+          <div class="row search-action sub-header" id="search">
+            <div class="col-sm-8 col-xs-12 no-padding-right">
+              <div class="input-group">
+                <span class="input-group-btn"><button class="btn btn-search" type="button"><i class="fa fa-search icon"></i></button></span>
+                <input type="text" class="form-control search-book" placeholder="Search books...">
+              </div><!-- /.input-group -->
+            </div><!-- /.col -->
+
+            <div class="col-sm-4 col-xs-12 select-wrapper" style="padding:0px;">
+              <select id="id_select" class="selectpicker">
+                <option selected>All Category</option>
+                <option>Books</option>
+                <option>Textbooks</option>
+                <option>Audiobooks</option>
+                <option>Magazines</option>
+                <option>Kids</option>
+              </select>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </li>
+      </ul><!-- /.search-box -->
+      <!-- ========================================= BREADCRUMB SEARCH BOX : END ========================================= -->
+
+    </div><!-- /.container -->
+  </div><!-- /.breadcrumb-container -->
+
+  <div class="not-found page">
+    <div class="container">
+      <div class="center-block  not-found-page-content">
+        <div class="page-header">
+          <h2 class="page-title">ỐI! ERROR 403! BẠN KHÔNG CÓ QUYỀN TRUY CẬP VÀO TRANG NÀY</h2>
+        </div><!-- /.page-header -->
+
+        <div class="page-body">
+          <div class="row notfound-action sub-header" id="notFound-search">
+            <div class="col-sm-8 no-padding-right">
+              <div class="input-group">
+                <span class="input-group-btn"><button class="btn btn-search btn-search-notfound" type="button"><i class="fa fa-search icon"></i></button></span>
+                <input type="text" class="form-control search-book" placeholder="Tìm kiếm sách...">
+              </div><!-- /.input-group -->
+            </div><!-- /.col -->
+
+            <div class="select-wrapper col-sm-4 no-padding-left" >
+              <select id="id_select_category" class="selectpicker">
+                <option selected>Thể loại</option>
+                <option>Books</option>
+                <option>Textbooks</option>
+                <option>Audiobooks</option>
+                <option>Magazines</option>
+                <option>Kids</option>
+              </select>
+            </div><!-- /.col -->
+          </div><!-- /.row -->
+        </div><!-- /.page-body -->
+      </div><!-- /.col -->
+    </div><!-- /.container -->
+  </div><!-- /.not-found page -->            <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img src="assets/images/top-scroll.png" alt="" ></a>
+</div>

@@ -1,0 +1,249 @@
+<div class="content">
+  <div class="breadcrumb-container">
+    <div class="container">
+      <ul class="breadcrumb pull-left">
+        <li><a routerLink="">Trang chủ</a></li>
+        <li><a routerLink="/book/list">Sách</a></li>
+        <li class="active">Chi tiết sách</li>
+      </ul><!-- /.breadcrumb -->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX ========================================= -->
+      <!--      <ul class="list-unstyled search-box pull-right">-->
+      <!--        <li data-target="#search" data-toggle="sub-header">-->
+      <!--          <button type="button" class="btn btn-primary-dark search-button"><i class="fa fa-search icon"></i></button>-->
+      <!--          <div class="row search-action sub-header" id="search">-->
+      <!--            <div class="col-sm-8 col-xs-12 no-padding-right">-->
+      <!--              <div class="input-group">-->
+      <!--                <span class="input-group-btn"><button class="btn btn-search" type="button"><i-->
+      <!--                  class="fa fa-search icon"></i></button></span>-->
+      <!--                <input type="text" class="form-control search-book" placeholder="Tìm kiếm sách...">-->
+      <!--              </div>&lt;!&ndash; /.input-group &ndash;&gt;-->
+      <!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+
+      <!--            <div class="col-sm-4 col-xs-12 select-wrapper" style="padding:0px;">-->
+      <!--              <select id="id_select" class="selectpicker">-->
+      <!--                <option selected>Thể loại</option>-->
+      <!--                <option>Books</option>-->
+      <!--                <option>Textbooks</option>-->
+      <!--                <option>Audiobooks</option>-->
+      <!--                <option>Magazines</option>-->
+      <!--                <option>Kids</option>-->
+      <!--              </select>-->
+      <!--            </div>&lt;!&ndash; /.col &ndash;&gt;-->
+      <!--          </div>&lt;!&ndash; /.row &ndash;&gt;-->
+      <!--        </li>-->
+      <!--      </ul>&lt;!&ndash; /.search-box &ndash;&gt;-->
+
+      <!-- ========================================= BREADCRUMB SEARCH BOX : END ========================================= -->
+
+    </div><!-- /.container -->
+  </div><!-- /.breadcrumb-container -->
+
+  <div class="book-detail page">
+    <div class="container">
+      <div class="primary-block clearfix">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="book-cover book detail-book-cover">
+              <img src="../../../assets/images/blank.gif" class="img-responsive" [attr.data-echo]="bookById.bookImage"
+                   width="303px" height="412px" alt="">
+              <div class="fade"></div>
+            </div><!-- /.book-cover -->
+          </div><!-- /.col -->
+
+          <div class="col-sm-8">
+            <div class="book-detail-header">
+              <h2 class="book-title">{{bookById.bookName}}</h2>
+              <p class="book-author">Bởi <span class="book-author-name">{{bookById.bookAuthorId.authorName}}</span></p>
+              <p>Số lượng: <span style="font-weight: bold; color: black">{{bookById.bookQuantity}}</span></p>
+              <div class="star-rating">
+                <i class="fa fa-star color"></i>
+                <i class="fa fa-star color"></i>
+                <i class="fa fa-star color"></i>
+                <i class="fa fa-star color"></i>
+                <i class="fa fa-star"></i>
+              </div><!-- /.star-rating -->
+            </div><!-- /.book-detail-header -->
+
+            <div class="book-detail-body">
+              <p>Mã sản phẩm: <span style="font-weight: bold; color: black">{{bookById.bookCode}}</span></p>
+              <p>Tên tác giả: <span style="font-weight: bold; color: black">{{bookById.bookAuthorId.authorName}}</span>
+              </p>
+              <p>Dịch giả: <span style="font-weight: bold; color: black">{{bookById.bookTranslator}}</span></p>
+              <p>Số trang: <span style="font-weight: bold; color: black">{{bookById.bookTotalPage}}</span></p>
+              <p>Kích thước: <span style="font-weight: bold; color: black">{{bookById.bookSize}}</span></p>
+              <p>Ngày phát hành: <span
+                style="font-weight: bold; color: black">{{bookById.bookPublishDate|date:'dd/MM/yyyy'}}</span></p>
+
+              <div class="detail-cart-button row clearfix">
+                <div class="pull-left col-md-5 col-sm-4 col-xs-12">
+                  <div class="detail-book-price">
+                    <span *ngIf="bookById.bookPromotionId.promotionId <= 1"
+                          class="price">{{bookById.bookPrice|currency:'VND'}}</span>
+                    <span *ngIf="bookById.bookPromotionId.promotionId > 1" class="price"><span
+                      class="price-before-discount">{{bookById.bookPrice|currency:'VND'}}</span> {{bookById.bookPrice - bookById.bookPrice * bookById.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                  </div><!-- /.detail-book-price -->
+                </div><!-- /.pull-left -->
+
+                <div class="pull-right col-md-7 col-sm-6 col-xs-12">
+                  <div class="row product-actions">
+                    <a *ngIf="!isLoggedIn" routerLink="/cart" class="col-sm-6 btn btn-primary btn-addToCart"><i
+                      class="icon-plus fa fa-plus-circle"></i>Thêm vào giỏ hàng</a>
+                    <a *ngIf="isLoggedIn" (click)="addBook(bookById)" class="col-sm-6 btn btn-primary btn-addToCart"><i
+                      class="icon-plus fa fa-plus-circle"></i>Thêm vào giỏ hàng</a>
+                    <div class="quantity book-detail-quantity col-xs-4 col-lg-3">
+                      <div class="quantity-block">
+                        <div class="quant-input">
+                          <div class="arrows">
+                            <button class="arrow plus gradient" [disabled]="(quantityCart + bookQuantity) >= bookById.bookQuantity" (click)="addBookQuantity()"><span class="ir"></span></button>
+                            <button class="arrow minus gradient" [disabled]="bookQuantity == 1"  (click)="subBookQuantity()">
+                              <span class="ir"></span></button>
+                          </div><!-- /.arrows -->
+                          <input id="input-quantity" class="txt-quantity" type="text" (change)="getQuantity($event.target)" value="1"/>
+                        </div><!-- /.quant-input -->
+                      </div><!-- /.quantity-block -->
+                    </div><!-- /.col -->
+                    <button title="favourite" class="hidden-xs btn btn-secondary btn-add-to-wishlist col-xs-2 "
+                            type="button"><span class="icon glyphicon glyphicon-heart"></span></button>
+                  </div><!-- /.row -->
+                </div><!-- /.pull-right -->
+              </div><!-- /.detail-cart-button -->
+
+              <div class="clearfix"></div>
+
+              <div class="product-description">
+                <h3>Giới thiệu sách</h3>
+                <p>{{bookById.bookContent}}</p>
+              </div><!-- /.product-description -->
+
+            </div><!-- /.book-detail-body -->
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+
+        <!--        <div class="tab-holder clearfix">-->
+        <!--          <div class="book-additional-details">-->
+        <!--            &lt;!&ndash; Nav tabs &ndash;&gt;-->
+        <!--            <ul class="nav nav-tabs book-detail-tab">-->
+        <!--              <li class="active" role="presentation"><a href="#more" data-toggle="tab">More About This Book</a></li>-->
+        <!--              <li role="presentation"><a href="#product-details" data-toggle="tab">Product Details</a></li>-->
+        <!--              <li role="presentation"><a href="#shipping" data-toggle="tab">Shipping</a></li>-->
+        <!--              <li role="presentation"><a href="#first-chapter" data-toggle="tab">First Chapter</a></li>-->
+        <!--            </ul>&lt;!&ndash; /.nav &ndash;&gt;-->
+
+        <!--            &lt;!&ndash; Tab panes &ndash;&gt;-->
+        <!--            <div class="tab-content">-->
+        <!--              <div class="tab-pane active" id="more" role="tabpanel">-->
+        <!--                <h3>Consectetur adipisicing elit, sed do eiusmod</h3>-->
+        <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis.</p>-->
+        <!--                <p>Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan.Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.</p>-->
+        <!--              </div>&lt;!&ndash; /.tab-pane &ndash;&gt;-->
+
+        <!--              <div class="tab-pane" id="product-details" role="tabpanel">-->
+        <!--                <ul class="list-unstyled list-kybook uppercase">-->
+        <!--                  <li>Sed do eiusmod tempor incididunt ut labore et dolore</li>-->
+        <!--                  <li>Sed do eiusmod tempor incididunt ut labore et dolore</li>-->
+        <!--                  <li>Sed do eiusmod tempor incididunt ut labore et dolore</li>-->
+        <!--                  <li>Sed do eiusmod tempor incididunt ut labore et dolore</li>-->
+        <!--                </ul>-->
+        <!--              </div>-->
+
+        <!--              <div class="tab-pane" id="shipping" role="tabpanel">-->
+        <!--                <p>Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.</p>-->
+        <!--              </div>&lt;!&ndash; /.tab-pane &ndash;&gt;-->
+
+        <!--              <div class="tab-pane" id="first-chapter" role="tabpanel">-->
+        <!--                <h3>Consectetur adipisicing elit, sed do eiusmod</h3>-->
+        <!--                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a diam lectus. Sed sit amet ipsum mauris. Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor. Praesent et diam eget libero egestas mattis sit amet vitae augue. Nam tincidunt congue enim, ut porta lorem lacinia consectetur. Donec ut libero sed arcu vehicula ultricies a non tortor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean ut gravida lorem. Ut turpis felis, pulvinar a semper sed, adipiscing id dolor. Pellentesque auctor nisi id magna consequat sagittis.</p>-->
+        <!--                <p>Curabitur dapibus enim sit amet elit pharetra tincidunt feugiat nisl imperdiet. Ut convallis libero in urna ultrices accumsan.Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.Maecenas congue ligula ac quam viverra nec consectetur ante hendrerit. Donec et mollis dolor.</p>-->
+        <!--              </div>&lt;!&ndash; /.tab-pane &ndash;&gt;-->
+
+        <!--            </div>&lt;!&ndash; /.tab-content &ndash;&gt;-->
+        <!--          </div>&lt;!&ndash; /.book-additional-details &ndash;&gt;-->
+        <!--        </div>&lt;!&ndash; /.col &ndash;&gt;-->
+      </div><!-- /.primary-block -->
+    </div><!-- /.container -->
+
+    <!-- ========================================= RELATE BOOKS MODULE ========================================= -->
+    <div class="container">
+      <div class="wow fadeInUp">
+        <div class="module block-relate-books module-block">
+          <div class="module-heading">
+            <h2 class="module-title">SÁCH CÙNG TÁC GIẢ</h2>
+          </div><!-- /.module-heading -->
+
+          <div class="customNavigation">
+            <a (click)="slickModal.slickGoTo(backBookIntro())" href="#"
+               class="btn btn-navigation left-nav-arrow-seller owl-prev next-slide"><i
+              class='icon fa fa-caret-left'></i></a>
+            <a (click)="slickModal.slickGoTo(nextBookIntro())" href="#"
+               class="btn btn-navigation right-nav-arrow-seller owl-next"><i
+              class='icon fa fa-caret-right'></i></a>
+          </div><!-- /.customNavigation -->
+
+          <div class="module-body">
+            <div class="books">
+              <ngx-slick-carousel class="carousel"
+                                  #slickModal="slick-carousel"
+                                  [config]="slideConfig">
+                <div ngxSlickItem *ngFor="let bookAuthor of bookAuthorList" class="slide">
+                  <div class="book">
+                    <div class="sale-ribbon" *ngIf="bookAuthor.bookPromotionId.promotionId > 1">
+                      <div class="sale-ribbon-content">sale off</div>
+                    </div>
+                    <div class="book-cover">
+                      <div class="book-inner">
+                        <img [routerLink]="['/book/list',bookAuthor.bookId]" [src]="bookAuthor.bookImage" width="193"
+                             height="261" alt="">
+                        <div class="fade"></div>
+                        <div class="book-price">
+                          <span *ngIf="bookAuthor.bookPromotionId.promotionId <= 1"
+                                class="price">{{bookAuthor.bookPrice|currency:'VND'}}</span>
+                          <span *ngIf="bookAuthor.bookPromotionId.promotionId > 1" class="price"><span
+                            class="price-before-discount">{{bookAuthor.bookPrice|currency:'VND'}}</span> {{bookAuthor.bookPrice - bookAuthor.bookPrice * bookAuthor.bookPromotionId.promotionPercent / 100 | currency :'VND'}}</span>
+                        </div><!-- /.book-price -->
+
+                        <div class="cart animate-effect">
+                          <div class="action">
+                            <a class="add-to-cart" href="detail.html" title="Add to Cart">
+                              <i class="icon icon-plus fa fa-plus-circle"></i>
+                            </a>
+                            <a class="add-to-cart" href="#" title="Favourite">
+                              <i class="icon icon-heart fa fa-heart"></i>
+                            </a>
+                          </div><!-- /.action -->
+                        </div><!-- /.cart -->
+                      </div><!-- /.book-inner -->
+                    </div><!-- /.book-cover -->
+
+
+                    <div class="book-details">
+                      <h3 class="book-title" style="width: 192px; font-size: 20px; height: 66px">
+                        <a>{{bookAuthor.bookName}}</a></h3>
+                      <p class="book-author">{{bookAuthor.bookAuthorId.authorName}}</p>
+                      <p>{{bookAuthor.bookQuantity}} sản phẩm có sẵn</p>
+                      <div class="star-rating">
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star color"></i>
+                        <i class="fa fa-star "></i>
+                      </div><!-- /.star-rating -->
+
+                    </div><!-- /.book-details -->
+                  </div><!-- /.book -->
+                </div>
+              </ngx-slick-carousel>
+            </div><!-- /#new-carousel -->
+          </div><!-- /.books -->
+          <br>
+          <br>
+        </div><!-- /.module -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <!-- ========================================= RELATE BOOKS MODULE : END ========================================= -->
+  </div><!-- /.book-detail page -->
+  <a class="scrollup hidden-xs hidden-sm" href="#" style="display: none;"><img src="assets/images/top-scroll.png"
+                                                                               alt=""></a>
+</div>
+<notifier-container></notifier-container>
+
